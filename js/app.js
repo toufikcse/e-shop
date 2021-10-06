@@ -10,85 +10,85 @@ const loadProducts = () => {
             "id": 2,
             "name": "Asus ",
             "price": 500.2,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://www.netstar.com.bd/wp-content/uploads/2020/05/asus-vivobook-15-x512fl-laptop-1-11.jpg",
         },
         {
             "id": 3,
             "name": "Dell",
             "price": 420.4,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://nk1bd.com/wp-content/uploads/2020/07/dell-inspiron-15-3580-1-500x500-1.jpg",
         },
         {
             "id": 4,
             "name": "Lenevo",
             "price": 802.60,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://i.gadgets360cdn.com/products/large/lenovo-thinkpad-plus-900x800-1578416340.jpg",
         },
         {
             "id": 5,
             "name": "Mac Air",
             "price": 410,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://cdn.shopify.com/s/files/1/0471/6039/3896/products/Apple_new-macbookair-m1-istockbd_1.jpg?v=1605037952",
         },
         {
             "id": 6,
             "name": "Samsung",
             "price": 510.5,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://i.gadgets360cdn.com/large/samsung_galaxy_book_s_2020_samsung_1590757082259.jpg?downsize=950:*",
         },
         {
             "id": 7,
             "name": "Sony vio",
             "price": 640.3,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://www.notebookcheck.net/typo3temp/_processed_/e/0/csm_VAIO_F-Serie_von_Sony_13_b579831fb9.jpg",
         },
         {
             "id": 8,
             "name": "Vivo",
             "price": 360.40,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://i.gadgets360cdn.com/products/large/Asus-Vivobook-S14-DB-753x800-1596098689.jpg?downsize=*:180",
         },
         {
             "id": 9,
             "name": "Accer",
             "price": 780.32,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://static.acer.com/up/Resource/Acer/Laptops/Aspire_5/photogallery/20201117/Acer-Aspire-5_A515-56-56G-56S-56T_Non-FP-with-Backlit_Silver_gallery_02.png",
         },
         {
             "id": 10,
             "name": "Redmi",
             "price": 802.61,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://www.kablewala.com.bd/images/thumbnails/715/500/detailed/161/XIAOMI-14235-A.jpg",
         },
         {
             "id": 11,
             "name": "Dell Vostro",
             "price": 190.51,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://i.dell.com/is/image/DellContent/content/dam/global-site-design/product_images/dell_client_products/notebooks/vostro_notebooks/15_3501/pdp/vostro-15-3501-pdp-gallery-504x350-bk.jpg?hei=402&qlt=90,0&op_usm=1.75,0.3,2,0&resMode=sharp&pscan=auto&fmt=pjpg",
         },
         {
             "id": 12,
             "name": "Mac Book",
             "price": 240.35,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://brotherselectronicsbd.com/image/cache/catalog/demo/product/Apple/MacBook%20Pro/Air%20M1/Macbook-Air-M1-1-800x800.png",
         },
         {
             "id": 13,
             "name": "Fujistu",
             "price": 605.90,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://www.fujitsu.com/hk/imagesgig5/W-DK70954_tcm137-5115638_tcm137-5309118-32.png",
         },
         {
             "id": 14,
             "name": "HP",
             "price": 725.14,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://i.gadgets360cdn.com/products/large/hp-pavilion-14-db-1-1200x800-1614153294.jpg?downsize=*:420&output-quality=80",
         },
         {
             "id": 15,
             "name": "Apple Pro",
             "price": 250.24,
-            "image": "https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg",
+            "image": "https://www.notebookcheck.net/fileadmin/_processed_/7/4/csm_IMG_9464_c9bd7b798a.jpg",
         }
     ];
     showProducts(data);
@@ -131,14 +131,13 @@ const addToCart = (name, price, image, id) => {
         div.classList.add("product");
         div.innerHTML = `
             <div class="added-product">
-                <img id="img-cart" class="img-cart-quantity" src="https://agbd.s3.amazonaws.com/media/images/Macbook-Aidr--M1-d-1.jpg" alt="">
+                <img id="img-cart" class="img-cart-quantity" src="${image}" alt="">
                 <span id="${id}">1</span>
                 <span>${name}</span>
                 <span>BDT: ${price}</span>
                 <span onclick="removeFromCart(\'${id}\', \'${price}\')">
                     <i id="remove-icon" class="fas fa-trash-alt"></i>
-                </span>
-                
+                </span>    
             </div>
             <hr>
         `;
@@ -212,7 +211,7 @@ const reduce_subTotal = (id, price) => {
         document.getElementById('tax').innerText = finalTax.toFixed(2);
     }
     // Total
-    updateTotal();    
+    updateTotal();   
 }
 
 const getInputValue = (id) => {
