@@ -135,7 +135,7 @@ const addToCart = (name, price, image, id) => {
                 <span id="${id}">1</span>
                 <span>${name}</span>
                 <span>BDT: ${price}</span>
-                <span onclick="removeFromCart(\'${id}\')">
+                <span onclick="removeFromCart(\'${id}\', \'${price}\')">
                     <i id="remove-icon" class="fas fa-trash-alt"></i>
                 </span>
                 
@@ -144,7 +144,7 @@ const addToCart = (name, price, image, id) => {
         `;
         document.getElementById('add-products').appendChild(div);
         cartArray.push(id);
-        console.log('cartArray push id = ', id);
+        // console.log('cartArray push id = ', id);
     }
     // console.log(idArray);
     subTotal('subtotal', price);
@@ -152,11 +152,12 @@ const addToCart = (name, price, image, id) => {
     updateTotal();
 };
 
-const removeFromCart = id => {
+const removeFromCart = (id, price) => {
     // console.log('id = ', id);
     // console.log('cart array before: ', cartArray);
-    console.log('cartArray Length ', cartArray.length);
-    console.log('idArray Length', idArray.length);
+    // console.log('cartArray Length ', cartArray.length);
+    // console.log('idArray Length', idArray.length);
+    reduce_subTotal(id, price);
     let key = 0;
     for(let i=0; i<cartArray.length; i++) {
         if(cartArray[i] == id){
@@ -170,6 +171,48 @@ const removeFromCart = id => {
     cartArray.splice(key, 1);
     idArray.splice(key, 1);
     // console.log(cartArray);
+}
+
+const reduce_subTotal = (id, price) => {
+    // console.log(id);
+    let price2 = price;
+    const textNumberOfProducts = document.getElementById(id).innerText;
+    const numberOfProducts = parseInt(textNumberOfProducts);
+    price2 = price * numberOfProducts;
+    // console.log(price2);
+    const preDiscount = getInputValue('discount');
+    const preSubtotal = getInputValue('subtotal');
+    const discount = (price2/100) * 10;
+    const totaldiscount = preDiscount - discount;
+
+    const afterDiscountPrice = (price2/100) * 90;
+    const total = preSubtotal - afterDiscountPrice;
+
+    // tax section
+    const oldTax = getInputValue('tax');
+    const tax = (afterDiscountPrice/100) * 5;
+    const finalTax = oldTax - tax;
+
+    if(totaldiscount < 0) {
+        document.getElementById('discount').innerText = '0.00';
+    }
+    else {
+        document.getElementById('discount').innerText = totaldiscount.toFixed(2);
+    }
+    if(total < 0) {
+       document.getElementById('subtotal').innerText = '0.00';
+    }
+    else {
+        document.getElementById('subtotal').innerText = /*Math.round(total);*/ total.toFixed(2);
+    }
+    if(finalTax < 0) {
+        document.getElementById('tax').innerText = '0.00';
+    }
+    else {
+        document.getElementById('tax').innerText = finalTax.toFixed(2);
+    }
+    // Total
+    updateTotal();    
 }
 
 const getInputValue = (id) => {
