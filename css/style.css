@@ -105,16 +105,19 @@ body{
     justify-content: space-between;
     align-items: center;
 }
+.inner-div{
+    display: inline-flex;
+}
 
 .cart-basket {
     display: flex;
-    font-size: .8rem;
+    font-size: .9rem;
     position: relative;
-    top: -62px;
+    top: -6px;
     /* right: 75px; */
-    left: 43px;
-    width: 20px;
-    height: 20px;
+    left: -12px;
+    width: 25px;
+    height: 25px;
     color: #fff;
     background-color:green;
     border-radius: 50%;

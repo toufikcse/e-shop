@@ -138,7 +138,7 @@ const addToCart = (name, price, image, id) => {
         div.classList.add("product");
         div.innerHTML = `
             <div class="added-product">
-                <div>
+                <div class="inner-div">
                     <img id="img-cart" src="${image}" alt="">
                     <span class="cart-basket" id="${id}">1</span>
                 </div>
@@ -201,19 +201,19 @@ const reduce_subTotal = (id, price) => {
     const tax = (afterDiscountPrice/100) * 5;
     const finalTax = oldTax - tax;
 
-    if(totaldiscount < 0) {
+    if(totaldiscount < 1.00) {
         document.getElementById('discount').innerText = '0.00';
     }
     else {
         document.getElementById('discount').innerText = totaldiscount.toFixed(2);
     }
-    if(total < 0) {
+    if(total < 1.00) {
        document.getElementById('subtotal').innerText = '0.00';
     }
     else {
         document.getElementById('subtotal').innerText = /*Math.round(total);*/ total.toFixed(2);
     }
-    if(finalTax < 0) {
+    if(finalTax < 1.00) {
         document.getElementById('tax').innerText = '0.00';
     }
     else {
@@ -254,6 +254,14 @@ const tax = id => {
 //grandTotal update function
 const updateTotal = () => {
     const grandTotal = getInputValue("subtotal") + getInputValue("tax");
-    document.getElementById("total").innerText = grandTotal.toFixed(2);
-    document.getElementById("pay-btn").innerText = grandTotal.toFixed(2);
+    // document.getElementById("total").innerText = grandTotal.toFixed(2);
+    // document.getElementById("pay-btn").innerText = grandTotal.toFixed(2);
+    if(grandTotal < 1.00){
+        document.getElementById("total").innerText = '0.00';
+        document.getElementById("pay-btn").innerText = '0.00';
+    } 
+    else{
+        document.getElementById("total").innerText = grandTotal.toFixed(2);
+        document.getElementById("pay-btn").innerText = grandTotal.toFixed(2);
+    }
 };
