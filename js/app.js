@@ -106,7 +106,7 @@ const showProducts = (products) => {
         <button id="btn-card" onclick="addToCart(\'${product.name}\', \'${product.price}\', \'${image}\', \'${product.id}\')">
             <img class="product-image" src=${image}></img>
             <h3>${product.name}</h3>
-            <h5>Price: ${product.price}</h5>
+            <h5>Price: <span id="product-price${product.id}">${product.price}</span></h5>
         </button>
         `;
       document.getElementById("all-products").appendChild(div);
@@ -124,6 +124,13 @@ const addToCart = (name, price, image, id) => {
         let count = parseInt(textcount);
         count = count + 1;
         document.getElementById(id).innerText = count;
+
+        const key1 = 'product-price' + id;
+        // console.log(key1);
+        const key2 = 'add-cart-price' + id;
+        const oldPrice = getInputValue(key1);
+        const newPrice = oldPrice * count;
+        document.getElementById(key2).innerText = newPrice.toFixed(2);
     }
     else {
         idArray.push(id);
@@ -131,10 +138,12 @@ const addToCart = (name, price, image, id) => {
         div.classList.add("product");
         div.innerHTML = `
             <div class="added-product">
-                <img id="img-cart" class="img-cart-quantity" src="${image}" alt="">
-                <span id="${id}">1</span>
+                <div>
+                    <img id="img-cart" src="${image}" alt="">
+                    <span class="cart-basket" id="${id}">1</span>
+                </div>
                 <span>${name}</span>
-                <span>BDT: ${price}</span>
+                <span>BDT <span id="add-cart-price${id}">${price}</span></span>
                 <span onclick="removeFromCart(\'${id}\', \'${price}\')">
                     <i id="remove-icon" class="fas fa-trash-alt"></i>
                 </span>    
